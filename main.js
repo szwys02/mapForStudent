@@ -471,8 +471,14 @@ var restaurants = L.geoJSON({
 ]
 }, {
     pointToLayer: function(feature, latlng) {
-        return L.circleMarker(latlng, markr)
-      }
+        /*return L.circleMarker(latlng, markr)*/
+        var icon = new L.Icon({
+            iconUrl: 'icons/restaurant.png',
+            iconSize: [20, 20],
+            iconAnchor: [10, 10],
+          });
+        return L.marker(latlng, {icon: icon});
+     }
   }).addTo(map);
 
 var geografia_uwr = L.geoJSON({
@@ -486,4 +492,13 @@ var geografia_uwr = L.geoJSON({
 {"type":"Feature","properties":{"id":23395,"TERYT":"0264","LOKALNYID":"2881C5D6-4DD0-CEB0-E053-CC2BA8C034D4","PRZESTRZENNAZW":"PL.PZGiK.337.BDOT10k","WERSJA":"2025-08-05T12:00:00","POCZATEKWERSJIOBIEKTU":"2025-08-05T12:00:00","OZNACZENIEZMIANY":"MGW/69/2025","ZRODLODANYCHGEOMETRYCZNYCH":"EGiB","KATEGORIAISTNIENIA":"eksploatowany","UWAGI":null,"INFORMACJADODATKOWA":"Zakład i Obserwatorium Klimatologii i Ochrony Atmosfery","KODKARTO10K":"0010_320_1","SKROTKARTOGRAFICZNY":"szk.","KODKST":"107","FUNKCJAOGOLNABUDYNKU":"budynki oświaty, nauki i kultury oraz budynki sportowe","PRZEWAZAJACAFUNKCJABUDYNKU":"szkoła wyższa","LICZBAKONDYGNACJI":3.0,"NAZWA":"Uniwersytet Wrocławski","FSBUD":"szkoła wyższa","IDEGIB":"026401_1.0004.AR_4.87.2_BUD"},"geometry":{"type":"Point","coordinates":[366275.687714042782318,361559.968723673722707]}},
 {"type":"Feature","properties":{"id":16921,"TERYT":"0264","LOKALNYID":"2881C5D6-C6CB-CEB0-E053-CC2BA8C034D4","PRZESTRZENNAZW":"PL.PZGiK.337.BDOT10k","WERSJA":"2025-08-05T12:00:00","POCZATEKWERSJIOBIEKTU":"2025-08-05T12:00:00","OZNACZENIEZMIANY":"MGW/69/2025","ZRODLODANYCHGEOMETRYCZNYCH":"EGiB","KATEGORIAISTNIENIA":"eksploatowany","UWAGI":"identyfikatorEGiB: brak unikalności w bazie EGiB","INFORMACJADODATKOWA":"Muzeum Uniwersytetu Wrocławskiego","KODKARTO10K":"0010_320_1","SKROTKARTOGRAFICZNY":"M","KODKST":"107","FUNKCJAOGOLNABUDYNKU":"budynki oświaty, nauki i kultury oraz budynki sportowe","PRZEWAZAJACAFUNKCJABUDYNKU":"muzeum","LICZBAKONDYGNACJI":4.0,"NAZWA":"Uniwersytet Wrocławski","FSBUD":"muzeum|szkoła wyższa","IDEGIB":"026401_1.0001.AR_26.3/1.1_BUD"},"geometry":{"type":"Point","coordinates":[362392.222944585722871,362620.470131364476401]}}
 ]
-}).addTo(map)
+}, {
+    pointToLayer: function(feature, latlng) {
+      var icon = new L.Icon({
+          iconUrl: 'icons/university.png',
+          iconSize: [20, 20],
+          iconAnchor: [10, 10],
+        });
+      return L.marker(latlng, {icon: icon});
+    }
+  }).addTo(map);
