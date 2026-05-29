@@ -5,13 +5,16 @@ function restaurantPopup(feature, layer) {
       cuisine = `${rest_prop.cuisine}`;
       cuisine = cuisine.replaceAll(';', ', ').replaceAll('_', ' ');
     }
-  if (rest_prop.name && rest_prop["source:opening_hours"] && cuisine) {
-      layer.bindPopup(`<h3>Restauracja ${rest_prop.name}</h3><br/>Kuchnia: ${cuisine}<br/>Godziny otwarcia: ${rest_prop["source:opening_hours"]}`);
+  if (rest_prop.name && rest_prop["opening_hours"] && cuisine && rest_prop.website) {
+      layer.bindPopup(`<h3>Restauracja ${rest_prop.name}</h3><br/>Kuchnia: ${cuisine}<br/>Godziny otwarcia: ${rest_prop["opening_hours"]}<br/>Strona WWW: <a target="_blank" href=${rest_prop.website}>Link</a>`);
     }
-  if (rest_prop.name && rest_prop["source:opening_hours"]) {
-      layer.bindPopup(`<h3>Restauracja ${rest_prop.name}</h3><br/>Godziny otwarcia: ${rest_prop["source:opening_hours"]}`);
+  else if (rest_prop.name && rest_prop.opening_hours && cuisine) {
+      layer.bindPopup(`<h3>Restauracja ${rest_prop.name}</h3><br/>Kuchnia: ${cuisine}<br/>Godziny otwarcia: ${rest_prop.opening_hours}`);
     }
-  if (rest_prop.name && cuisine) {
+  else if (rest_prop.name && rest_prop.opening_hours) {
+      layer.bindPopup(`<h3>Restauracja ${rest_prop.name}</h3><br/>Godziny otwarcia: ${rest_prop.opening_hours}`);
+    }
+  else if (rest_prop.name && cuisine) {
       layer.bindPopup(`<h3>Restauracja ${rest_prop.name}</h3><br/>Kuchnia: ${cuisine}`);
     }
   else {
@@ -41,7 +44,7 @@ function onLocationError(e) {
 var restaurants = L.geoJSON({
 "type": "FeatureCollection",
 "name": "restauracje",
-"bbox": [ 16.8441893, 51.0481592, 17.1493392, 51.1776157 ],                                                                        
+"bbox": [ 16.8441893, 51.0481592, 17.1493392, 51.1776157 ], 
 "features": [
 {"type":"Feature","properties":{"full_id":"n280727473","osm_id":"280727473","osm_type":"node","amenity":"restaurant","craft":null,"buildingpart":null,"diet:local":null,"ref":null,"disused:cuisine":null,"network":null,"heating":null,"check_date:smoking":null,"name:prefix":null,"diet:kosher":null,"drinking_water:refill":null,"mobile":null,"ice_cream":null,"disco":null,"toilets:description:en":null,"seasonal":null,"contact:mobile":null,"check_date:lunch":null,"shop":null,"smoking":null,"check_date:diet:vegetarian":null,"live_music":null,"kids_area:indoor":null,"kids_area:capacity":null,"fee":null,"instagram":null,"payment:american_express":null,"internet_access:operator":null,"internet_access:librespeed":null,"kids_area:supervised":null,"kids_area:outdoor":null,"kids_area:fee":null,"kids_area:description:en":null,"drink:wine":null,"diet:gluten_free":null,"payment:cards":null,"diet:vegan:description":null,"website:menu":null,"contact:instagram":null,"diet:vegan":null,"contact:email":null,"toilets:fee:conditional":null,"toilets:fee":null,"toilets:charge":null,"dog":null,"wikipedia":null,"wikidata":null,"old_name:1273-1945":null,"website:1":null,"source:opening_hours":null,"url":null,"payment:coins":null,"contact:facebook":null,"official_name":null,"motorcycle:theme":null,"name:ja":null,"capacity:outdoors":null,"noname":null,"toilets:level":null,"language:pl":null,"language:en":null,"internet_access:ssid":null,"internet_access:password":null,"internet_access:ipv6":null,"internet_access:fee":null,"image":null,"alt_name":null,"capacity":null,"wikimedia_commons":null,"addr:unit":null,"name:zh-Hant":null,"name:zh-Hans":null,"name:pl":null,"name:ko-Latn":null,"name:ko":null,"facebook":null,"changing_table:location":null,"changing_table:fee":null,"changing_table:count":null,"access":null,"bar":null,"contact:website":null,"contact:phone":null,"highchair":null,"toilets:capacity":null,"surveillance":null,"lunch:menu:price":null,"lunch:menu:course:soup":null,"lunch:menu:course:salad":null,"lunch:menu:course:main":null,"lunch:menu:course:drink":null,"lunch:menu:course:dessert":null,"lunch:menu":null,"air_conditioning":null,"microbrewery":null,"entrance":null,"old_name":null,"operator":null,"brand:wikipedia":null,"brand:wikidata":null,"brand":null,"service:electricity":null,"payment:debit_cards":null,"opening_hours:signed":null,"opening_hours:kitchen":null,"drink:beer":null,"breakfast":null,"website":null,"email":null,"start_date":null,"reservation":null,"diet:vegetarian":null,"check_date:opening_hours":null,"takeaway":null,"phone":null,"internet_access":null,"description":null,"delivery":null,"wheelchair":"no","toilets:wheelchair":"no","toilets:unisex":"yes","toilets:access":"customers","toilets":"yes","reusable_packaging:offer":"yes","payment:visa":"yes","payment:mastercard":"yes","payment:google_pay":"yes","payment:credit_cards":"yes","payment:cash":"yes","outdoor_seating":"yes","opening_hours":"Mo-Su 12:00-22:00","name":"Chatka przy Jatkach","lunch":"no","level":"0","kids_area":"no","indoor_seating":"yes","cuisine":"polish","check_date":"2025-02-22","changing_table":"no","addr:street":"Odrzańska","addr:postcode":"50-113","addr:housenumber":"7","addr:city":"Wrocław"},"bbox":[17.0313895,51.1120189,17.0313895,51.1120189],"geometry":{"type":"Point","coordinates":[17.0313895,51.1120189]}},
 {"type":"Feature","properties":{"full_id":"n300461042","osm_id":"300461042","osm_type":"node","amenity":"restaurant","craft":null,"buildingpart":null,"diet:local":null,"ref":null,"disused:cuisine":null,"network":null,"heating":null,"check_date:smoking":null,"name:prefix":null,"diet:kosher":null,"drinking_water:refill":null,"mobile":null,"ice_cream":null,"disco":null,"toilets:description:en":null,"seasonal":null,"contact:mobile":null,"check_date:lunch":null,"shop":null,"smoking":null,"check_date:diet:vegetarian":null,"live_music":null,"kids_area:indoor":null,"kids_area:capacity":null,"fee":null,"instagram":null,"payment:american_express":null,"internet_access:operator":null,"internet_access:librespeed":null,"kids_area:supervised":null,"kids_area:outdoor":null,"kids_area:fee":null,"kids_area:description:en":null,"drink:wine":null,"diet:gluten_free":null,"payment:cards":null,"diet:vegan:description":null,"website:menu":null,"contact:instagram":null,"diet:vegan":null,"contact:email":null,"toilets:fee:conditional":null,"toilets:fee":null,"toilets:charge":null,"dog":null,"wikipedia":null,"wikidata":null,"old_name:1273-1945":null,"website:1":null,"source:opening_hours":null,"url":null,"payment:coins":null,"contact:facebook":null,"official_name":null,"motorcycle:theme":null,"name:ja":null,"capacity:outdoors":null,"noname":null,"toilets:level":null,"language:pl":null,"language:en":null,"internet_access:ssid":null,"internet_access:password":null,"internet_access:ipv6":null,"internet_access:fee":null,"image":null,"alt_name":null,"capacity":null,"wikimedia_commons":null,"addr:unit":null,"name:zh-Hant":null,"name:zh-Hans":null,"name:pl":null,"name:ko-Latn":null,"name:ko":null,"facebook":null,"changing_table:location":null,"changing_table:fee":null,"changing_table:count":null,"access":null,"bar":null,"contact:website":null,"contact:phone":null,"highchair":null,"toilets:capacity":null,"surveillance":null,"lunch:menu:price":null,"lunch:menu:course:soup":null,"lunch:menu:course:salad":null,"lunch:menu:course:main":null,"lunch:menu:course:drink":null,"lunch:menu:course:dessert":null,"lunch:menu":null,"air_conditioning":null,"microbrewery":null,"entrance":null,"old_name":null,"operator":null,"brand:wikipedia":null,"brand:wikidata":null,"brand":null,"service:electricity":null,"payment:debit_cards":null,"opening_hours:signed":null,"opening_hours:kitchen":null,"drink:beer":null,"breakfast":null,"website":null,"email":null,"start_date":null,"reservation":null,"diet:vegetarian":null,"check_date:opening_hours":null,"takeaway":"yes","phone":"+48 534 798 863","internet_access":"wlan","description":"Wcześniej znajdowała się tu restauracja \"Casa Italiana\"","delivery":"yes","wheelchair":"no","toilets:wheelchair":null,"toilets:unisex":null,"toilets:access":null,"toilets":null,"reusable_packaging:offer":null,"payment:visa":null,"payment:mastercard":null,"payment:google_pay":null,"payment:credit_cards":null,"payment:cash":null,"outdoor_seating":null,"opening_hours":"Mo-Th 11:30-22:00; Fr 11:30-23:00; Sa 12:00-23:00; Su 12:00-22:00","name":"Pha Tha Thai","lunch":null,"level":null,"kids_area":null,"indoor_seating":null,"cuisine":"thai","check_date":"2025-12-01","changing_table":null,"addr:street":"Więzienna","addr:postcode":"50-118","addr:housenumber":"5b","addr:city":"Wrocław"},"bbox":[17.0324586,51.1122161,17.0324586,51.1122161],"geometry":{"type":"Point","coordinates":[17.0324586,51.1122161]}},
@@ -573,7 +576,7 @@ var overlayMaps = {
 };
 
 var map = L.map('map', {
-  layers: [basemaps.OSM, geografia_uwr]
+  layers: [basemaps.osmHOT, geografia_uwr]
 });
 map.on('locationfound', onLocationFound);
 map.on('locationerror', onLocationError);
@@ -581,6 +584,3 @@ map.on('locationerror', onLocationError);
 map.locate({setView: true, maxZoom: 13});
 
 var layerControl = L.control.layers(basemaps, overlayMaps).addTo(map);
-basemaps.OSM.addTo(map);
-
-
