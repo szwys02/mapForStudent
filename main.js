@@ -19,6 +19,11 @@ function restaurantPopup(feature, layer) {
     }
 }
 
+function uniPopup(feature, layer) {
+    var uni_prop = feature.properties;
+
+  }
+
 function onLocationFound(e) {
     var lat = e.latlng.lat;
     var lng = e.latlng.lng;
@@ -523,6 +528,28 @@ var geografia_uwr = L.geoJSON({
     }
   });
 
+var mleczne = L.geoJSON({
+"type": "FeatureCollection",
+"name": "bary_mleczne",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-15,
+"features": [
+{"type":"Feature","properties":{"full_id":"n1189882834","osm_id":"1189882834","osm_type":"node","amenity":"fast_food","contact:email":null,"ice_cream":null,"network":null,"lit":null,"street_vendor":null,"building:levels":null,"building":null,"payment:sodexo":null,"website:menu":null,"seasonal":null,"diet:mediterranean":null,"door":null,"entrance":null,"note:name":null,"name:prefix":null,"name:en":null,"toilets:level":null,"television":null,"vegetarian":null,"theme":null,"kids_area:description":null,"kids_area:capacity":null,"check_date:diet:vegetarian":null,"name:ka":null,"official_name":null,"self_service":null,"language:pl":null,"language:en":null,"name:ja":null,"lunch:menu:course:soup":null,"lunch:menu:course:salad":null,"lunch:menu:course:main":null,"lunch:menu:course:drink":null,"lunch:menu:course:dessert":null,"name:vi":null,"addr:street:sym_ul":null,"bar":null,"description:start_date":null,"lunch:menu:price":null,"breakfast":null,"location":null,"layer":null,"opening_hours:kitchen":null,"drinking_water:refill":null,"ref":null,"name:pl":null,"name:ko-Latn":null,"name:ko":null,"payment:visa_electron":null,"craft":null,"contact:mobile":null,"full_name":null,"disused:addr:street":null,"disused:addr:housenumber":null,"internet_access:ssid":null,"internet_access:ipv6":null,"url":null,"stroller":null,"lunch:menu":null,"baby_feeding":null,"internet_access:fee":null,"toilets:fee:conditional":null,"toilets:fee":null,"toilets:charge":null,"drink:wine":null,"drink:beer":null,"wheelchair:description":null,"mobile":null,"source_ref:opening_hours":null,"source_ref":null,"addr:country":null,"reservation":null,"capacity":null,"noname":null,"kids_area:description:en":null,"changing_table:location":null,"changing_table:fee":null,"changing_table:count":null,"alcohol":null,"contact:phone":null,"source:addr":null,"addr:unit":null,"smoking":null,"service:electricity":null,"fast_food":null,"access":null,"surveillance":null,"contact:website":null,"toilets:access":null,"lunch":null,"kids_area:supervised":null,"kids_area:outdoor":null,"kids_area:indoor":null,"kids_area:fee":null,"old_name":null,"payment:visa_debit":null,"payment:visa":null,"payment:mastercard_contactless":null,"payment:mastercard":null,"payment:maestro":null,"payment:google_pay":null,"payment:contactless":null,"payment:blik":null,"payment:apple_pay":null,"payment:app":null,"diet:kosher":null,"diet:gluten_free":null,"contact:instagram":null,"contact:facebook":null,"toilets:unisex":null,"toilets:capacity":null,"origin":null,"opening_hours:signed":null,"music":null,"kids_area":null,"highchair":null,"email":null,"dog":null,"changing_table":null,"air_conditioning":null,"payment:debit_cards":null,"payment:credit_cards":null,"check_date:opening_hours":null,"payment:cash":"yes","payment:cards":"yes","diet:vegan":"limited","diet:halal":"no","description":"Bar mleczny","facebook":null,"outdoor_seating":null,"indoor_seating":null,"internet_access":"no","drive_through":null,"reusable_packaging:offer":"yes","image":null,"delivery":"no","operator":null,"level":null,"brand:wikipedia":null,"brand:wikidata":null,"brand":null,"alt_name":null,"toilets:wheelchair":null,"toilets":null,"opening_hours":"Mo-Fr 07:00-18:00; Sa 08:00-17:00","diet:vegetarian":"yes","addr:street":"Kuźnicza","addr:postcode":"50-138","addr:housenumber":"47a","addr:city":"Wrocław","website":null,"start_date":"1970-09-30","wheelchair":"yes","takeaway":null,"phone":null,"name":"Bar Mleczny Miś","cuisine":"polish","check_date":"2026-03"},"geometry":{"type":"Point","coordinates":[17.0342353,51.1125538]}},
+{"type":"Feature","properties":{"full_id":"n11806819455","osm_id":"11806819455","osm_type":"node","amenity":"fast_food","contact:email":null,"ice_cream":null,"network":null,"lit":null,"street_vendor":null,"building:levels":null,"building":null,"payment:sodexo":null,"website:menu":null,"seasonal":null,"diet:mediterranean":null,"door":null,"entrance":null,"note:name":null,"name:prefix":null,"name:en":null,"toilets:level":null,"television":null,"vegetarian":null,"theme":null,"kids_area:description":null,"kids_area:capacity":null,"check_date:diet:vegetarian":null,"name:ka":null,"official_name":null,"self_service":null,"language:pl":null,"language:en":null,"name:ja":null,"lunch:menu:course:soup":null,"lunch:menu:course:salad":null,"lunch:menu:course:main":null,"lunch:menu:course:drink":null,"lunch:menu:course:dessert":null,"name:vi":null,"addr:street:sym_ul":null,"bar":null,"description:start_date":null,"lunch:menu:price":null,"breakfast":null,"location":null,"layer":null,"opening_hours:kitchen":null,"drinking_water:refill":null,"ref":null,"name:pl":null,"name:ko-Latn":null,"name:ko":null,"payment:visa_electron":null,"craft":null,"contact:mobile":null,"full_name":null,"disused:addr:street":null,"disused:addr:housenumber":null,"internet_access:ssid":null,"internet_access:ipv6":null,"url":null,"stroller":null,"lunch:menu":null,"baby_feeding":null,"internet_access:fee":null,"toilets:fee:conditional":null,"toilets:fee":null,"toilets:charge":null,"drink:wine":null,"drink:beer":null,"wheelchair:description":null,"mobile":null,"source_ref:opening_hours":null,"source_ref":null,"addr:country":null,"reservation":null,"capacity":null,"noname":null,"kids_area:description:en":null,"changing_table:location":null,"changing_table:fee":null,"changing_table:count":null,"alcohol":null,"contact:phone":null,"source:addr":null,"addr:unit":null,"smoking":null,"service:electricity":null,"fast_food":null,"access":null,"surveillance":null,"contact:website":null,"toilets:access":null,"lunch":null,"kids_area:supervised":null,"kids_area:outdoor":null,"kids_area:indoor":null,"kids_area:fee":null,"old_name":null,"payment:visa_debit":null,"payment:visa":null,"payment:mastercard_contactless":null,"payment:mastercard":null,"payment:maestro":null,"payment:google_pay":null,"payment:contactless":null,"payment:blik":null,"payment:apple_pay":null,"payment:app":null,"diet:kosher":null,"diet:gluten_free":null,"contact:instagram":null,"contact:facebook":null,"toilets:unisex":null,"toilets:capacity":null,"origin":null,"opening_hours:signed":null,"music":null,"kids_area":null,"highchair":null,"email":null,"dog":null,"changing_table":null,"air_conditioning":null,"payment:debit_cards":null,"payment:credit_cards":null,"check_date:opening_hours":null,"payment:cash":null,"payment:cards":null,"diet:vegan":null,"diet:halal":null,"description":"Bar mleczny","facebook":null,"outdoor_seating":null,"indoor_seating":null,"internet_access":null,"drive_through":null,"reusable_packaging:offer":null,"image":null,"delivery":null,"operator":null,"level":null,"brand:wikipedia":null,"brand:wikidata":null,"brand":null,"alt_name":null,"toilets:wheelchair":null,"toilets":null,"opening_hours":"Mo-Fr 09:00-19:00, Sa 10:00-16:00","diet:vegetarian":"yes","addr:street":null,"addr:postcode":null,"addr:housenumber":null,"addr:city":null,"website":null,"start_date":null,"wheelchair":null,"takeaway":null,"phone":"+48 713456071","name":"Produs","cuisine":"polish","check_date":"2026-03"},"geometry":{"type":"Point","coordinates":[17.0462011,51.1211383]}},
+{"type":"Feature","properties":{"full_id":"n2435366659","osm_id":"2435366659","osm_type":"node","amenity":"fast_food","contact:email":null,"ice_cream":null,"network":null,"lit":null,"street_vendor":null,"building:levels":null,"building":null,"payment:sodexo":null,"website:menu":null,"seasonal":null,"diet:mediterranean":null,"door":null,"entrance":null,"note:name":null,"name:prefix":null,"name:en":null,"toilets:level":null,"television":null,"vegetarian":null,"theme":null,"kids_area:description":null,"kids_area:capacity":null,"check_date:diet:vegetarian":null,"name:ka":null,"official_name":null,"self_service":null,"language:pl":null,"language:en":null,"name:ja":null,"lunch:menu:course:soup":null,"lunch:menu:course:salad":null,"lunch:menu:course:main":null,"lunch:menu:course:drink":null,"lunch:menu:course:dessert":null,"name:vi":null,"addr:street:sym_ul":null,"bar":null,"description:start_date":null,"lunch:menu:price":null,"breakfast":null,"location":null,"layer":null,"opening_hours:kitchen":null,"drinking_water:refill":null,"ref":null,"name:pl":null,"name:ko-Latn":null,"name:ko":null,"payment:visa_electron":null,"craft":null,"contact:mobile":null,"full_name":null,"disused:addr:street":null,"disused:addr:housenumber":null,"internet_access:ssid":null,"internet_access:ipv6":null,"url":null,"stroller":null,"lunch:menu":null,"baby_feeding":null,"internet_access:fee":null,"toilets:fee:conditional":null,"toilets:fee":null,"toilets:charge":null,"drink:wine":null,"drink:beer":null,"wheelchair:description":null,"mobile":null,"source_ref:opening_hours":null,"source_ref":null,"addr:country":null,"reservation":null,"capacity":null,"noname":null,"kids_area:description:en":null,"changing_table:location":null,"changing_table:fee":null,"changing_table:count":null,"alcohol":"no","contact:phone":null,"source:addr":null,"addr:unit":null,"smoking":null,"service:electricity":null,"fast_food":"cafeteria","access":null,"surveillance":null,"contact:website":null,"toilets:access":null,"lunch":null,"kids_area:supervised":null,"kids_area:outdoor":null,"kids_area:indoor":null,"kids_area:fee":null,"old_name":null,"payment:visa_debit":null,"payment:visa":null,"payment:mastercard_contactless":null,"payment:mastercard":null,"payment:maestro":null,"payment:google_pay":null,"payment:contactless":null,"payment:blik":null,"payment:apple_pay":null,"payment:app":null,"diet:kosher":null,"diet:gluten_free":null,"contact:instagram":null,"contact:facebook":null,"toilets:unisex":null,"toilets:capacity":null,"origin":null,"opening_hours:signed":null,"music":null,"kids_area":null,"highchair":null,"email":null,"dog":null,"changing_table":null,"air_conditioning":null,"payment:debit_cards":null,"payment:credit_cards":null,"check_date:opening_hours":"2023-09-01","payment:cash":null,"payment:cards":null,"diet:vegan":null,"diet:halal":null,"description":"Bar mleczny; Pierogi wydawane od godz. 13:00","facebook":null,"outdoor_seating":null,"indoor_seating":null,"internet_access":null,"drive_through":null,"reusable_packaging:offer":null,"image":null,"delivery":null,"operator":null,"level":null,"brand:wikipedia":null,"brand:wikidata":null,"brand":null,"alt_name":null,"toilets:wheelchair":null,"toilets":null,"opening_hours":"Mo-Fr 09:00-17:00","diet:vegetarian":"yes","addr:street":null,"addr:postcode":null,"addr:housenumber":null,"addr:city":null,"website":null,"start_date":null,"wheelchair":null,"takeaway":null,"phone":null,"name":"Mewa","cuisine":"polish_milk_bar;polish","check_date":"2026-03"},"geometry":{"type":"Point","coordinates":[17.0331139,51.1163895]}}
+]
+}, {
+    pointToLayer: function(feature, latlng) {
+        var icon = new L.Icon({
+            iconUrl: 'icons/restaurant.png',
+            iconSize: [20, 20],
+            iconAnchor: [10, 10],
+          });
+        return L.marker(latlng, {icon: icon});
+      },
+      onEachFeature: restaurantPopup
+  }); 
+
 var basemaps = {
   OSM: L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -540,16 +567,19 @@ var basemaps = {
 
 var overlayMaps = {
   "Restauracje": restaurants,
-  "Budynki uniwersyteckie": geografia_uwr
+  "Budynki uniwersyteckie": geografia_uwr,
+  "Bary mleczne": mleczne
 };
 
 var map = L.map('map', {
   layers: [basemaps.OSM, geografia_uwr]
 });
+map.on('locationfound', onLocationFound);
+map.on('locationerror', onLocationError);
+
 map.locate({setView: true, maxZoom: 13});
 
 var layerControl = L.control.layers(basemaps, overlayMaps).addTo(map);
 basemaps.OSM.addTo(map);
 
-map.on('locationfound', onLocationFound);
-map.on('locationerror', onLocationError);
+
