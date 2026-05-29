@@ -602,13 +602,13 @@ var shopping_mall = L.geoJSON({
   })
 
 var basemaps = {
-  OSM: L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-  }),
-  osmHOT: L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+    osmHOT: L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'
+  }),
+    OSM: L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   }),
   openTopoMap: L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -617,8 +617,8 @@ var basemaps = {
 };
 
 var overlayMaps = {
-  "Restauracje": restaurants,
   "Budynki uniwersyteckie": geografia_uwr,
+  "Restauracje": restaurants,
   "Bary mleczne": mleczne,
   "Centra handlowe": shopping_mall,
 };
