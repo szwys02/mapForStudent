@@ -19,6 +19,20 @@ function restaurantPopup(feature, layer) {
     }
 }
 
+function onLocationFound(e) {
+    var lat = e.latlng.lat;
+    var lng = e.latlng.lng;
+    L.marker(e.latlng, {
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.5,
+      }).addTo(map).bindPopup(`Twoja pozycja: ${lat > 0 ? `${lat}&deg;N` : `${lat}&deg;S`} ${lng > 0 ? `${lng}&deg;E` : `${lng}&deg;W`}`);
+  }
+
+function onLocationError(e) {
+    alert(e.mesage);
+  }
+
 var restaurants = L.geoJSON({
 "type": "FeatureCollection",
 "name": "restauracje",
@@ -531,7 +545,11 @@ var overlayMaps = {
 
 var map = L.map('map', {
   layers: [basemaps.OSM, geografia_uwr]
-}).setView([51.110155, 17.032035], 13);
+});
+map.locate({setView: true, maxZoom: 13});
 
 var layerControl = L.control.layers(basemaps, overlayMaps).addTo(map);
 basemaps.OSM.addTo(map);
+
+map.on('locationfound', onLocationFound);
+map.on('locationerror', onLocationError);
