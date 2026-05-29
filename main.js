@@ -643,6 +643,17 @@ var map = L.map('map', {
 map.on('locationfound', onLocationFound);
 map.on('locationerror', onLocationError);
 
+L.control.locate({
+    position: 'topleft',
+    strings: {
+        title: "Pokaż moją lokalizację"
+      },
+      locateOptions: {
+          maxZoom: 13,
+          enableHighAccuracy: true
+        }
+  }).addTo(map);
+
 map.locate({setView: true, maxZoom: 13});
 
 var layerControl = L.control.layers(basemaps, overlayMaps).addTo(map);
