@@ -3,7 +3,7 @@ function restaurantPopup(feature, layer) {
   var cuisine = '';
   if (rest_prop.cuisine) {
       cuisine = `${rest_prop.cuisine}`;
-      cuisine = cuisine.replaceAll(';', ', ');
+      cuisine = cuisine.replaceAll(';', ', ').replaceAll('_', ' ');
     }
   if (rest_prop.name && rest_prop["source:opening_hours"] && cuisine) {
       layer.bindPopup(`<h3>Restauracja ${rest_prop.name}</h3><br/>Kuchnia: ${cuisine}<br/>Godziny otwarcia: ${rest_prop["source:opening_hours"]}`);
@@ -521,8 +521,8 @@ var geografia_uwr = L.geoJSON({
     pointToLayer: function(feature, latlng) {
       var icon = new L.Icon({
           iconUrl: 'icons/university.png',
-          iconSize: [20, 20],
-          iconAnchor: [10, 10],
+          iconSize: [30, 30],
+          iconAnchor: [15, 15],
         });
       return L.marker(latlng, {icon: icon});
     }
