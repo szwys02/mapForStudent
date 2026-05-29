@@ -1,7 +1,3 @@
-import ".node_modules/leaflet.locatecontrol";
-import ".node_modules/leaflet.locatecontrol/dist/L.Control.Locate.min.css";
-import L from ".node_modules/leaflet";
-
 function restaurantPopup(feature, layer) {
   var rest_prop = feature.properties;
   var cuisine = '';
