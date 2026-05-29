@@ -1,17 +1,23 @@
-var map = L.map('map').setView([51.110155, 17.032035], 13);
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
-
-var markr = {
-    radius: 5,
-    fillColor: '#ff7800',
-    color: '#000',
-    weight: 1,
-    opacity: 1,
-    fillOpacity: 0.8
-  };
+function restaurantPopup(feature, layer) {
+  var rest_prop = feature.properties;
+  var cuisine = '';
+  if (rest_prop.cuisine) {
+      cuisine = `${rest_prop.cuisine}`;
+      cuisine = cuisine.replaceAll(';', ', ');
+    }
+  if (rest_prop.name && rest_prop["source:opening_hours"] && cuisine) {
+      layer.bindPopup(`<h3>Restauracja ${rest_prop.name}</h3><br/>Kuchnia: ${cuisine}<br/>Godziny otwarcia: ${rest_prop["source:opening_hours"]}`);
+    }
+  if (rest_prop.name && rest_prop["source:opening_hours"]) {
+      layer.bindPopup(`<h3>Restauracja ${rest_prop.name}</h3><br/>Godziny otwarcia: ${rest_prop["source:opening_hours"]}`);
+    }
+  if (rest_prop.name && cuisine) {
+      layer.bindPopup(`<h3>Restauracja ${rest_prop.name}</h3><br/>Kuchnia: ${cuisine}`);
+    }
+  else {
+      layer.bindPopup('<h3>Restauracja</h3>');
+    }
+}
 
 var restaurants = L.geoJSON({
 "type": "FeatureCollection",
@@ -478,21 +484,21 @@ var restaurants = L.geoJSON({
             iconAnchor: [10, 10],
           });
         return L.marker(latlng, {icon: icon});
-     }
-  }).addTo(map);
+     },
+     onEachFeature: restaurantPopup
+  });
 
 var geografia_uwr = L.geoJSON({
 "type": "FeatureCollection",
-"name": "uwr_geografia",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::2180" } },
+"name": "uwr_geografia_wgs",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-15,
 "features": [
-{"type":"Feature","properties":{"id":59216,"TERYT":"0264","LOKALNYID":"2881C5D6-8143-CEB0-E053-CC2BA8C034D4","PRZESTRZENNAZW":"PL.PZGiK.337.BDOT10k","WERSJA":"2025-08-05T12:00:00","POCZATEKWERSJIOBIEKTU":"2025-08-05T12:00:00","OZNACZENIEZMIANY":"MGW/69/2025","ZRODLODANYCHGEOMETRYCZNYCH":"EGiB","KATEGORIAISTNIENIA":"eksploatowany","UWAGI":null,"INFORMACJADODATKOWA":"Muzeum Mineralogiczne im. Kazimierza Maślankiewicza oraz Muzeum Geologiczne im. Henryka Teisseyre","KODKARTO10K":"0010_320_1","SKROTKARTOGRAFICZNY":"szk.","KODKST":"107","FUNKCJAOGOLNABUDYNKU":"budynki oświaty, nauki i kultury oraz budynki sportowe","PRZEWAZAJACAFUNKCJABUDYNKU":"szkoła wyższa","LICZBAKONDYGNACJI":4.0,"NAZWA":"Uniwersytet Wrocławski","FSBUD":"muzeum|szkoła wyższa","IDEGIB":"026401_1.0005.AR_24.31.1_BUD"},"geometry":{"type":"Point","coordinates":[362142.097072267148178,362893.139703828084748]}},
-{"type":"Feature","properties":{"id":34334,"TERYT":"0264","LOKALNYID":"A795F6C7-9ECB-4199-9E6A-574D2B67A9DF","PRZESTRZENNAZW":"PL.PZGiK.337.BDOT10k","WERSJA":"2025-08-05T12:00:00","POCZATEKWERSJIOBIEKTU":"2025-08-05T12:00:00","OZNACZENIEZMIANY":"MGW/69/2025","ZRODLODANYCHGEOMETRYCZNYCH":"EGiB","KATEGORIAISTNIENIA":"eksploatowany","UWAGI":null,"INFORMACJADODATKOWA":null,"KODKARTO10K":"0010_320_1","SKROTKARTOGRAFICZNY":"szk.","KODKST":"107","FUNKCJAOGOLNABUDYNKU":"budynki oświaty, nauki i kultury oraz budynki sportowe","PRZEWAZAJACAFUNKCJABUDYNKU":"szkoła wyższa","LICZBAKONDYGNACJI":4.0,"NAZWA":null,"FSBUD":"szkoła wyższa","IDEGIB":"026401_1.0001.AR_26.45/1.1_BUD"},"geometry":{"type":"Point","coordinates":[362399.80211723264074,362420.490249703696463]}},
-{"type":"Feature","properties":{"id":23395,"TERYT":"0264","LOKALNYID":"2881C5D6-4DD0-CEB0-E053-CC2BA8C034D4","PRZESTRZENNAZW":"PL.PZGiK.337.BDOT10k","WERSJA":"2025-08-05T12:00:00","POCZATEKWERSJIOBIEKTU":"2025-08-05T12:00:00","OZNACZENIEZMIANY":"MGW/69/2025","ZRODLODANYCHGEOMETRYCZNYCH":"EGiB","KATEGORIAISTNIENIA":"eksploatowany","UWAGI":null,"INFORMACJADODATKOWA":"Zakład i Obserwatorium Klimatologii i Ochrony Atmosfery","KODKARTO10K":"0010_320_1","SKROTKARTOGRAFICZNY":"szk.","KODKST":"107","FUNKCJAOGOLNABUDYNKU":"budynki oświaty, nauki i kultury oraz budynki sportowe","PRZEWAZAJACAFUNKCJABUDYNKU":"szkoła wyższa","LICZBAKONDYGNACJI":3.0,"NAZWA":"Uniwersytet Wrocławski","FSBUD":"szkoła wyższa","IDEGIB":"026401_1.0004.AR_4.87.2_BUD"},"geometry":{"type":"Point","coordinates":[366275.687714042782318,361559.968723673722707]}},
-{"type":"Feature","properties":{"id":16921,"TERYT":"0264","LOKALNYID":"2881C5D6-C6CB-CEB0-E053-CC2BA8C034D4","PRZESTRZENNAZW":"PL.PZGiK.337.BDOT10k","WERSJA":"2025-08-05T12:00:00","POCZATEKWERSJIOBIEKTU":"2025-08-05T12:00:00","OZNACZENIEZMIANY":"MGW/69/2025","ZRODLODANYCHGEOMETRYCZNYCH":"EGiB","KATEGORIAISTNIENIA":"eksploatowany","UWAGI":"identyfikatorEGiB: brak unikalności w bazie EGiB","INFORMACJADODATKOWA":"Muzeum Uniwersytetu Wrocławskiego","KODKARTO10K":"0010_320_1","SKROTKARTOGRAFICZNY":"M","KODKST":"107","FUNKCJAOGOLNABUDYNKU":"budynki oświaty, nauki i kultury oraz budynki sportowe","PRZEWAZAJACAFUNKCJABUDYNKU":"muzeum","LICZBAKONDYGNACJI":4.0,"NAZWA":"Uniwersytet Wrocławski","FSBUD":"muzeum|szkoła wyższa","IDEGIB":"026401_1.0001.AR_26.3/1.1_BUD"},"geometry":{"type":"Point","coordinates":[362392.222944585722871,362620.470131364476401]}}
-]
-}, {
+{"type":"Feature","properties":{"id":59216,"TERYT":"0264","LOKALNYID":"2881C5D6-8143-CEB0-E053-CC2BA8C034D4","PRZESTRZENNAZW":"PL.PZGiK.337.BDOT10k","WERSJA":"2025-08-05T12:00:00","POCZATEKWERSJIOBIEKTU":"2025-08-05T12:00:00","OZNACZENIEZMIANY":"MGW/69/2025","ZRODLODANYCHGEOMETRYCZNYCH":"EGiB","KATEGORIAISTNIENIA":"eksploatowany","UWAGI":null,"INFORMACJADODATKOWA":"Muzeum Mineralogiczne im. Kazimierza Maślankiewicza oraz Muzeum Geologiczne im. Henryka Teisseyre","KODKARTO10K":"0010_320_1","SKROTKARTOGRAFICZNY":"szk.","KODKST":"107","FUNKCJAOGOLNABUDYNKU":"budynki oświaty, nauki i kultury oraz budynki sportowe","PRZEWAZAJACAFUNKCJABUDYNKU":"szkoła wyższa","LICZBAKONDYGNACJI":4.0,"NAZWA":"Uniwersytet Wrocławski","FSBUD":"muzeum|szkoła wyższa","IDEGIB":"026401_1.0005.AR_24.31.1_BUD"},"geometry":{"type":"Point","coordinates":[17.029764383658673,51.116203203789802]}},
+{"type":"Feature","properties":{"id":34334,"TERYT":"0264","LOKALNYID":"A795F6C7-9ECB-4199-9E6A-574D2B67A9DF","PRZESTRZENNAZW":"PL.PZGiK.337.BDOT10k","WERSJA":"2025-08-05T12:00:00","POCZATEKWERSJIOBIEKTU":"2025-08-05T12:00:00","OZNACZENIEZMIANY":"MGW/69/2025","ZRODLODANYCHGEOMETRYCZNYCH":"EGiB","KATEGORIAISTNIENIA":"eksploatowany","UWAGI":null,"INFORMACJADODATKOWA":null,"KODKARTO10K":"0010_320_1","SKROTKARTOGRAFICZNY":"szk.","KODKST":"107","FUNKCJAOGOLNABUDYNKU":"budynki oświaty, nauki i kultury oraz budynki sportowe","PRZEWAZAJACAFUNKCJABUDYNKU":"szkoła wyższa","LICZBAKONDYGNACJI":4.0,"NAZWA":null,"FSBUD":"szkoła wyższa","IDEGIB":"026401_1.0001.AR_26.45/1.1_BUD"},"geometry":{"type":"Point","coordinates":[17.033625536084042,51.112016196292402]}},
+{"type":"Feature","properties":{"id":23395,"TERYT":"0264","LOKALNYID":"2881C5D6-4DD0-CEB0-E053-CC2BA8C034D4","PRZESTRZENNAZW":"PL.PZGiK.337.BDOT10k","WERSJA":"2025-08-05T12:00:00","POCZATEKWERSJIOBIEKTU":"2025-08-05T12:00:00","OZNACZENIEZMIANY":"MGW/69/2025","ZRODLODANYCHGEOMETRYCZNYCH":"EGiB","KATEGORIAISTNIENIA":"eksploatowany","UWAGI":null,"INFORMACJADODATKOWA":"Zakład i Obserwatorium Klimatologii i Ochrony Atmosfery","KODKARTO10K":"0010_320_1","SKROTKARTOGRAFICZNY":"szk.","KODKST":"107","FUNKCJAOGOLNABUDYNKU":"budynki oświaty, nauki i kultury oraz budynki sportowe","PRZEWAZAJACAFUNKCJABUDYNKU":"szkoła wyższa","LICZBAKONDYGNACJI":3.0,"NAZWA":"Uniwersytet Wrocławski","FSBUD":"szkoła wyższa","IDEGIB":"026401_1.0004.AR_4.87.2_BUD"},"geometry":{"type":"Point","coordinates":[17.089299490400975,51.105198144343454]}},
+{"type":"Feature","properties":{"id":16921,"TERYT":"0264","LOKALNYID":"2881C5D6-C6CB-CEB0-E053-CC2BA8C034D4","PRZESTRZENNAZW":"PL.PZGiK.337.BDOT10k","WERSJA":"2025-08-05T12:00:00","POCZATEKWERSJIOBIEKTU":"2025-08-05T12:00:00","OZNACZENIEZMIANY":"MGW/69/2025","ZRODLODANYCHGEOMETRYCZNYCH":"EGiB","KATEGORIAISTNIENIA":"eksploatowany","UWAGI":"identyfikatorEGiB: brak unikalności w bazie EGiB","INFORMACJADODATKOWA":"Muzeum Uniwersytetu Wrocławskiego","KODKARTO10K":"0010_320_1","SKROTKARTOGRAFICZNY":"M","KODKST":"107","FUNKCJAOGOLNABUDYNKU":"budynki oświaty, nauki i kultury oraz budynki sportowe","PRZEWAZAJACAFUNKCJABUDYNKU":"muzeum","LICZBAKONDYGNACJI":4.0,"NAZWA":"Uniwersytet Wrocławski","FSBUD":"muzeum|szkoła wyższa","IDEGIB":"026401_1.0001.AR_26.3/1.1_BUD"},"geometry":{"type":"Point","coordinates":[17.033440961883127,51.113812138941846]}}
+]}, {
     pointToLayer: function(feature, latlng) {
       var icon = new L.Icon({
           iconUrl: 'icons/university.png',
@@ -501,4 +507,29 @@ var geografia_uwr = L.geoJSON({
         });
       return L.marker(latlng, {icon: icon});
     }
-  }).addTo(map);
+  });
+
+var basemaps = {
+  OSM: L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }),
+  OrtoFoto: L.tileLayer.wms('https://mapy.geoportal.gov.pl/wss/service/PZGIK/ORTO/WMS/StandardResolution', {
+    layers: 'ORTOFOTOMAPA',
+  }),
+  BDOT10k: L.tileLayer.wms('https://mapy.geoportal.gov.pl/wss/service/pub/guest/kompozycja_BDOT10k_WMS/MapServer/WMSServer', {
+    layers: 'BDOT10k',
+  })
+};
+
+var overlayMaps = {
+  "Restauracje": restaurants,
+  "Budynki uniwersyteckie": geografia_uwr
+};
+
+var map = L.map('map', {
+  layers: [basemaps.OSM, geografia_uwr]
+}).setView([51.110155, 17.032035], 13);
+
+var layerControl = L.control.layers(basemaps, overlayMaps).addTo(map);
+basemaps.OSM.addTo(map);
